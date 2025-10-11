@@ -1,0 +1,125 @@
+/* ----- COLOR PALETTE ----- */
+:root {
+    --dark-blue: #0b132b;
+    --mid-blue: #1c2541;
+    --accent-blue: #5bc0be;
+    --text-light: #e0e0e0;
+    --text-muted: #a5a5a5;
+}
+
+/* ----- GLOBAL STYLES ----- */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--dark-blue);
+    color: var(--text-light);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+h1, h2 {
+    color: var(--accent-blue);
+    text-align: center;
+}
+
+section {
+    padding: 80px 10%;
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.btn {
+    background: var(--accent-blue);
+    color: var(--dark-blue);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+.btn:hover {
+    background: #62d1cf;
+}
+
+/* ----- NAVBAR ----- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--mid-blue);
+    padding: 20px 10%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    gap: 25px;
+}
+
+.navbar li a {
+    color: var(--text-light);
+    font-weight: 500;
+    transition: 0.3s;
+}
+.navbar li a:hover {
+    color: var(--accent-blue);
+}
+
+/* ----- HERO SECTION ----- */
+.hero {
+    background: linear-gradient(135deg, var(--dark-blue) 40%, var(--mid-blue) 100%);
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* ----- ABOUT ----- */
+.about {
+    background: var(--mid-blue);
+    border-radius: 12px;
+    margin: 60px 10%;
+    padding: 60px;
+}
+
+/* ----- PROJECTS ----- */
+.projects {
+    background: var(--dark-blue);
+}
+
+/* ----- SKILLS ----- */
+.skills {
+    background: var(--mid-blue);
+}
+
+/* ----- CONTACT ----- */
+.contact {
+    background: var(--dark-blue);
+}
+
+/* ----- FOOTER ----- */
+footer {
+    background: var(--mid-blue);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
