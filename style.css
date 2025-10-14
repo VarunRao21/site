@@ -3,123 +3,183 @@
     --dark-blue: #0b132b;
     --mid-blue: #1c2541;
     --accent-blue: #5bc0be;
-    --text-light: #e0e0e0;
-    --text-muted: #a5a5a5;
-}
-
-/* ----- GLOBAL STYLES ----- */
-body {
+    --text-light: #f0f0f0;
+    --text-muted: #a8a8a8;
+  }
+  
+  /* ----- GLOBAL STYLES ----- */
+  * {
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Inter", "Poppins", sans-serif;
     background: var(--dark-blue);
     color: var(--text-light);
     line-height: 1.6;
     scroll-behavior: smooth;
-}
-
-h1, h2 {
-    color: var(--accent-blue);
-    text-align: center;
-}
-
-section {
-    padding: 80px 10%;
-}
-
-a {
-    color: var(--accent-blue);
-    text-decoration: none;
-}
-
-.btn {
-    background: var(--accent-blue);
-    color: var(--dark-blue);
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: 0.3s ease;
-}
-.btn:hover {
-    background: #62d1cf;
-}
-
-/* ----- NAVBAR ----- */
-.navbar {
+    overflow-x: hidden;
+  }
+  
+  /* ----- NAVBAR ----- */
+  .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--mid-blue);
-    padding: 20px 10%;
+    background: rgba(28, 37, 65, 0.9);
+    padding: 18px 10%;
     position: sticky;
     top: 0;
-    z-index: 1000;
-}
-
-.navbar .logo {
-    font-size: 1.4rem;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+  
+  .navbar .logo {
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--accent-blue);
-}
-
-.navbar ul {
-    display: flex;
+    letter-spacing: 0.5px;
+  }
+  
+  .navbar ul {
     list-style: none;
-    margin: 0;
+    display: flex;
     gap: 25px;
-}
-
-.navbar li a {
+  }
+  
+  .navbar li a {
     color: var(--text-light);
+    text-decoration: none;
     font-weight: 500;
-    transition: 0.3s;
-}
-.navbar li a:hover {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar li a::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: width 0.3s ease;
+  }
+  
+  .navbar li a:hover {
     color: var(--accent-blue);
-}
-
-/* ----- HERO SECTION ----- */
-.hero {
-    background: linear-gradient(135deg, var(--dark-blue) 40%, var(--mid-blue) 100%);
-    height: 90vh;
+  }
+  
+  .navbar li a:hover::after {
+    width: 100%;
+  }
+  
+  /* ----- HERO SECTION ----- */
+  .hero {
+    height: 100vh;
+    background: linear-gradient(145deg, var(--dark-blue) 40%, var(--mid-blue) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-
-.hero p {
+    padding: 0 10%;
+  }
+  
+  .hero-content {
+    max-width: 700px;
+    animation: fadeIn 1s ease-in forwards;
+  }
+  
+  .hero h1 {
+    font-size: 2.8rem;
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+  }
+  
+  .hero p {
     color: var(--text-muted);
-    margin-bottom: 25px;
-}
-
-/* ----- ABOUT ----- */
-.about {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+  }
+  
+  .btn {
+    background: var(--accent-blue);
+    color: var(--dark-blue);
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: #62d1cf;
+    transform: scale(1.05);
+  }
+  
+  /* ----- SECTION STYLE ----- */
+  .section {
+    padding: 100px 10%;
+    text-align: center;
+  }
+  
+  .section h2 {
+    font-size: 2.2rem;
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .alt-bg {
     background: var(--mid-blue);
-    border-radius: 12px;
-    margin: 60px 10%;
-    padding: 60px;
-}
-
-/* ----- PROJECTS ----- */
-.projects {
-    background: var(--dark-blue);
-}
-
-/* ----- SKILLS ----- */
-.skills {
+  }
+  
+  /* ----- FOOTER ----- */
+  footer {
     background: var(--mid-blue);
-}
-
-/* ----- CONTACT ----- */
-.contact {
-    background: var(--dark-blue);
-}
-
-/* ----- FOOTER ----- */
-footer {
-    background: var(--mid-blue);
-    color: var(--text-muted);
     text-align: center;
     padding: 20px;
     font-size: 0.9rem;
-}
+    color: var(--text-muted);
+  }
+  
+  /* ----- ANIMATIONS ----- */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease-out forwards;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ----- RESPONSIVE ----- */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .navbar ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .hero h1 {
+      font-size: 2rem;
+    }
+  
+    .section {
+      padding: 80px 6%;
+    }
+  }
+  
