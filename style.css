@@ -30,9 +30,9 @@ body {
   position: fixed;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.3;
+  opacity: 0.25;
   z-index: 0;
-  animation: float 20s infinite alternate ease-in-out;
+  animation: float 20s infinite alternate ease-in-out, pulse 6s infinite ease-in-out;
 }
 
 .orb1 {
@@ -41,7 +41,7 @@ body {
   background: var(--sky-blue);
   top: 10%;
   left: 5%;
-  animation-delay: 0s;
+  animation-delay: 0s, 2s;
 }
 
 .orb2 {
@@ -50,7 +50,7 @@ body {
   background: var(--accent-blue);
   bottom: 10%;
   right: 10%;
-  animation-delay: 5s;
+  animation-delay: 5s, 0s;
 }
 
 .orb3 {
@@ -59,12 +59,17 @@ body {
   background: rgba(255, 255, 255, 0.2);
   top: 40%;
   right: 40%;
-  animation-delay: 10s;
+  animation-delay: 10s, 4s;
 }
 
 @keyframes float {
   0% { transform: translateY(0) translateX(0) scale(1); }
   100% { transform: translateY(-60px) translateX(60px) scale(1.1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.4; }
 }
 
 /* ===== NAVBAR ===== */
@@ -95,15 +100,30 @@ nav ul {
 }
 
 nav li a {
+  position: relative;
   text-decoration: none;
   color: var(--white);
   font-weight: 500;
   transition: 0.3s ease;
 }
 
+nav li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: var(--accent-blue);
+  transition: 0.3s ease;
+}
+
+nav li a:hover::after {
+  width: 100%;
+}
+
 nav li a:hover {
   color: var(--accent-blue);
-  text-shadow: 0 0 10px rgba(110, 168, 255, 0.7);
 }
 
 /* ===== HERO ===== */
@@ -115,6 +135,25 @@ nav li a:hover {
   text-align: center;
   position: relative;
   z-index: 1;
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid var(--accent-blue);
+  white-space: nowrap;
+  display: inline-block;
+  width: 0;
+  animation: typing 3s steps(20, end) infinite alternate, blink 0.8s step-end infinite;
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  90% { width: 100%; }
+  100% { width: 100%; } /* small pause at end before restarting */
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
 }
 
 .hero-content h1 {
@@ -150,7 +189,6 @@ nav li a:hover {
   padding: 100px 10%;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
   text-align: center;
   position: relative;
@@ -165,14 +203,14 @@ nav li a:hover {
   padding: 60px 40px;
   width: 80%;
   max-width: 900px;
-  margin: 60px 0;
+  margin: 60px auto;
   transition: all 0.4s ease;
 }
 
 .glass-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 50px rgba(110, 168, 255, 0.2);
-  border: 1px solid rgba(110, 168, 255, 0.4);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 50px rgba(110, 168, 255, 0.3);
+  border: 1px solid rgba(110, 168, 255, 0.5);
 }
 
 .section h2 {
@@ -186,6 +224,19 @@ nav li a:hover {
   line-height: 1.7;
   font-size: 1.05rem;
   max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== FADE-IN ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===== FOOTER ===== */

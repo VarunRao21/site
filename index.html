@@ -25,44 +25,50 @@
 
   <section class="hero">
     <div class="hero-content">
-      <h1>Hi, I'm Varun!</h1>
+      <h1 class="typewriter">Hi, I'm Varun!</h1>
       <p>EECS @ UC Berkeley</p>
       <a href="#projects" class="btn">Explore</a>
     </div>
   </section>
 
   <main>
-    <section id="about" class="section glass-card">
+    <section id="about" class="section glass-card fade-in">
       <h2>About Me</h2>
-      <p>
-        interests
-      </p>
+      <p>interests</p>
     </section>
 
-    <section id="projects" class="section glass-card">
+    <section id="projects" class="section glass-card fade-in">
       <h2>Projects</h2>
-      <p>
-        timeline style?
-      </p>
+      <p>timeline style?</p>
     </section>
 
-    <section id="skills" class="section glass-card">
+    <section id="skills" class="section glass-card fade-in">
       <h2>Skills</h2>
-      <p>
-        skills section (logos)
-      </p>
+      <p>skills section (logos)</p>
     </section>
 
-    <section id="contact" class="section glass-card">
+    <section id="contact" class="section glass-card fade-in">
       <h2>Contact</h2>
-      <p>
-        email, linkedin, github, phone number
-      </p>
+      <p>email, linkedin, github, phone number</p>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Varun Rao</p>
   </footer>
+
+  <script>
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.3, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
 </body>
 </html>
