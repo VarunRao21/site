@@ -149,7 +149,6 @@ nav li a:hover {
 @keyframes typing {
   0% { width: 0; }
   90% { width: 100%; }
-  100% { width: 100%; } /* small pause at end before restarting */
 }
 
 @keyframes blink {
@@ -202,7 +201,7 @@ nav li a:hover {
   box-shadow: 0 0 30px rgba(110, 168, 255, 0.1);
   padding: 60px 40px;
   width: 80%;
-  max-width: 900px;
+  max-width: 2000px;
   margin: 60px auto;
   transition: all 0.4s ease;
 }
@@ -227,6 +226,81 @@ nav li a:hover {
   margin: 0 auto;
 }
 
+#about p {
+  margin-left: 200;
+  text-align: left;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  position: relative;
+  margin: 50px auto 0;
+  padding-left: 40px;
+  max-width: 700px;
+  text-align: left;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background-color: var(--white);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 30px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -1px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--white);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255,255,255,0.7);
+}
+
+.timeline-content h3 {
+  color: var(--accent-blue);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.timeline-content p {
+  color: var(--light-gray);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ===== SKILLS GRID ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  max-width: 900px;
+  margin: 40px auto 0;
+  gap: 50px 60px;
+  justify-items: center;
+}
+
+.skill img {
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(110, 168, 255, 0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skill:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 15px rgba(110, 168, 255, 0.7));
+}
+
 /* ===== FADE-IN ANIMATION ===== */
 .fade-in {
   opacity: 0;
@@ -237,6 +311,41 @@ nav li a:hover {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.contact-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-column a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.contact-column a:hover {
+  color: var(--white);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 700px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ===== FOOTER ===== */
